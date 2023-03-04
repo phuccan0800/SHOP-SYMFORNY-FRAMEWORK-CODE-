@@ -1,30 +1,37 @@
 <?php
 
-namespace App\Form;
+namespace App\Controller\Admin;
 
-use App\Entity\Products;
+use App\Entity\Orders;
+use App\Entity\Customers;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProductsType extends AbstractType
+class OrdersCrudController extends AbstractCrudController
 {
+    public static function getEntityFqcn(): string
+    {
+        return Orders::class;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('details')
+            ->add('customers')
             ->add('price')
             ->add('qty')
-            ->add('img')
-            ->add('Categories')
+            ->add('date')
+            ->add('Products')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Products::class,
+            'data_class' => Orders::class,
         ]);
     }
 }
