@@ -26,7 +26,7 @@ class CategoriesController extends AbstractController
     }
 
     /**
-     * @Route("categories/new", name="app_categories_new", methods={"GET", "POST"})
+     * @Route("/new", name="app_categories_new", methods={"GET", "POST"})
      */
     public function new(Request $request, CategoriesRepository $categoriesRepository): Response
     {

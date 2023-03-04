@@ -43,6 +43,11 @@ class Products
      */
     private $qty;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $img;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +109,18 @@ class Products
     public function setQty(int $qty): self
     {
         $this->qty = $qty;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(?string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }
