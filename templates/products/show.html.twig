@@ -33,10 +33,4 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('app_products_index') }}">back to list</a>
-
-    <a href="{{ path('app_products_edit', {'id': product.id}) }}">edit</a>
-
-    {{ include('products/_delete_form.html.twig') }}
 {% endblock %}

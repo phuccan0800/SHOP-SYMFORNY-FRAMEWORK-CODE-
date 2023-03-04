@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Products index</h1>
 
-    <table class="table">
+    <table class="table" align=center>
         <thead>
             <tr>
                 <th>Id</th>
@@ -26,10 +26,6 @@
                 <td>{{ product.price }}</td>
                 <td>{{ product.qty }}</td>
                 <td>{{ product.img }}</td>
-                <td>
-                    <a href="{{ path('app_products_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_products_edit', {'id': product.id}) }}">edit</a>
-                </td>
             </tr>
         {% else %}
             <tr>
@@ -38,6 +34,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_products_new') }}">Create new</a>
 {% endblock %}

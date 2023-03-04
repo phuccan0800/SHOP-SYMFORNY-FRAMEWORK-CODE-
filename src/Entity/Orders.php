@@ -24,7 +24,7 @@ class Orders
     private $Products;
 
     /**
-     * @ORM\ManyToOne(targetEntity=customers::class)
+     * @ORM\ManyToOne(targetEntity=Customers::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $customers;

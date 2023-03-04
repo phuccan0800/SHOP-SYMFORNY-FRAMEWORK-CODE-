@@ -1,2 +1,31 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        <script src="{{ app.request.basepath }}/js/script.js"></script>
+        <link rel="icon" href="img/logo.png" />
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    
+    </head>
+    <header>
+
+    </header>
+    <body align=center>
+    <div class="container green topBotomBordersOut">
+        <a href='/index.php'>HOME</a>
+        <a href='/products'>PRODUCTS</a>
+        <a>PORTFOLIO</a>
+        <a>ABOUT</a>
+        <a align='right'>CONTACT</a>
+    </div>
+      {% block body %}  {% endblock %}
+    </body>
+</html>

@@ -15,7 +15,7 @@ use App\Entity\Orders;
 class DashboardController extends AbstractDashboardController
 {
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/dashboard", name="admin")
      */
     public function index(): Response
     {
