@@ -24,7 +24,27 @@ class indexController extends AbstractController
             'products' => $indexRepository->findAll(),
         ]);
     }
+    /**
+     * @Route("find", name="find_index", methods={"GET"})
+     */
+    public function find(Request $request): Response
+    {
+        $query = $request->query->get('q'); // lấy giá trị của tham số q trên URL
 
+        $products = [];
+        if ($query) {
+            $repository = $this->getDoctrine()->getRepository(Products::class);
+            $products = $repository->createQueryBuilder('p')
+                ->where('p.name LIKE :query')
+                ->setParameter('query', '%' . $query . '%')
+                ->getQuery()
+                ->getResult();
+        }
 
+        return $this->render('index.html.twig', [
+            'query' => $query,
+            'products' => $products,
+        ]);
+    }
 
 }

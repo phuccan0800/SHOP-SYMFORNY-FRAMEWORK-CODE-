@@ -22,11 +22,15 @@
     <div class="container green topBotomBordersOut">
         <a href='/index.php'>HOME</a>
         <a href='/index.php'>PRODUCTS</a>
-        <a>PORTFOLIO</a>
-        <a>ABOUT</a>
-        <a href='/orders'>ORDER</a>
+        <a href='/index.php'>CATEGORIY</a>
+       <a href='/index.php'>ABOUT US</a>
+        <a href='/orders'>CHECK ORDER</a>
     </div>
     <div>
+    <form class="search" action="{{ path('find_index') }}" method="get">
+        <input type="text" name="q" value="" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
         {% for product in products %}
             <div class="wrapper" align='center'>
                 <div class="product-img">

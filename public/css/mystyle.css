@@ -73,7 +73,9 @@ div.topBotomBordersOut a:before
     top: 0px;
     transform: translateY(10px);
 }
-
+.search {
+  margin-top: 30px;
+}
 div.topBotomBordersOut a:after
 {
     bottom: 0px;
