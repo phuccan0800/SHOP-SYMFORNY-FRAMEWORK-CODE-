@@ -31,12 +31,16 @@ class OrdersCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id') ->hideOnForm();
-        yield AssociationField::new('customers','Customer Email');
+        yield TextField::new('fullname');
+        yield TextField::new('email');
+        yield TextField::new('phone');
+        yield TextField::new('address');
         yield AssociationField::new('Products','Product Name');
         yield IntegerField::new('qty','So Luong');
         yield MoneyField::new('price') ->setCurrency('VND');
-        yield DateTimeField::new('date')->renderAsChoice();
+        yield DateTimeField::new('date')->renderAsChoice() ->hideOnForm();
         yield TextField::new('address');
+        yield TextField::new('status');
     }
 
 

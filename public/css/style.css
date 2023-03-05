@@ -93,7 +93,7 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
 
 .wrapper {
     height: 420px;
-    width: 770px;
+    width: 680px;
     margin: 50px auto;
     border-radius: 7px 7px 7px 7px;
     -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -107,7 +107,7 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
     float: left;
     height: 420px;
     width: 327px;
-    margin-left: 50px;
+    margin-left: 10px;
 
   }
   
@@ -121,7 +121,7 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
     width: 327px;
     border-radius: 0 7px 10px 7px;
     background-color: #ffffff;
-    margin-right: 50px;
+    margin-right: 10px;
   }
   
   .product-text {
@@ -141,23 +141,12 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
     font-family: 'Bentham', serif;
   }
   
-  .product-text h2 {
-    margin: 0 0 0 0;
-    font-size: 13px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: #d2d2d2;
-    letter-spacing: 0.2em;
-  }
-  
   .product-text p {
     height: 125px;
     width: 270px;
-    font-family: 'Playfair Display', serif;
-    color: #8d8d8d;
-    line-height: 1.7em;
-    font-size: 15px;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: #002fff;
+    font-size: 20px;
     font-weight: lighter;
     overflow: hidden;
   }
@@ -173,9 +162,9 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
     display: inline-block;
     height: auto;
     width: 327px;
-    font-family: 'Trocchi', serif;
+    font-family: 'Bentham', serif;
     margin: 0 0 0 0px;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: lighter;
     color: #474747;
   }
@@ -201,11 +190,31 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
     text-transform: uppercase;
     letter-spacing: 0.2em;
     color: #ffffff;
-    background-color: #9cebd5;
+    background-color: #5a9ef8;
     cursor: pointer;
     outline: none;
   }
   
   .product-price-btn button:hover {
-    background-color: #79b0a1;
+    background-color: #51ff42;
+  }
+  /* Mui ten lên dau trang */
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #fff;
+
+  color: white;
+  cursor: pointer;
+  border-radius: 90px;
+  opacity: 0.5;
+  }
+   
+  #myBtn:hover {
+  background-color: #f1f1f1;
   }

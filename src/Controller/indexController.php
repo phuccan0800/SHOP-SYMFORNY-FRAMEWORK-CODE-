@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Products;
+use App\Entity\Categories;  
 use App\Form\ProductsType;
 use App\Repository\indexRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,6 +22,7 @@ class indexController extends AbstractController
     public function index(indexRepository $indexRepository): Response
     {
         return $this->render('index.html.twig', [
+            'categories' => $indexRepository->findAll(),
             'products' => $indexRepository->findAll(),
         ]);
     }

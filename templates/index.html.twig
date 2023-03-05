@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
         <script src="{{ asset('js/script.js') }}"></script>
         <link rel="icon" href="img/logo.png" />
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
@@ -17,12 +17,31 @@
         {% endblock %}
     
     </head>
+    <header></header>
+<button id="myBtn" title="Lên đầu trang"><img src='/img/len.png' title='lên đầu trang' width='50px'/></button>
+
+<script>
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+ 
+    document.getElementById('myBtn').addEventListener("click", function(){
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    });
+</script>
     <body align=center >	
-    <header></header>						
+					
     <div class="container green topBotomBordersOut">
         <a href='/index.php'>HOME</a>
         <a href='/index.php'>PRODUCTS</a>
-        <a href='/index.php'>CATEGORIY</a>
+        <a href='/index.php'>CATEGORY</a>
        <a href='/index.php'>ABOUT US</a>
         <a href='/orders'>CHECK ORDER</a>
     </div>
@@ -31,6 +50,7 @@
         <input type="text" name="q" value="" placeholder="Search...">
         <button type="submit">Search</button>
     </form>
+ 
         {% for product in products %}
             <div class="wrapper" align='center'>
                 <div class="product-img">
@@ -42,7 +62,8 @@
                         <p>{{ product.details }}</p>
                     </div>
                         <div class="product-price-btn">
-                        <p>{{ product.price }} đ</p>
+                        <p>Category: {{ product.categories }}</p><br>
+                        <p>{{ product.price }} đ</p><br>
                         <button align="center" type="button">buy now</button>
                     </div>
                 </div>
@@ -52,6 +73,8 @@
                 <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
+    
     </div>
     </body>
+
 </html>
