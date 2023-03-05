@@ -16,7 +16,6 @@
     
     </head>
     <header>
-
     </header>
     <body align=center>
     <div class="container green topBotomBordersOut">
@@ -26,6 +25,19 @@
         <a>ABOUT</a>
         <a align='right'>CONTACT</a>
     </div>
-      {% block body %}  {% endblock %}
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.details }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.qty }}</td>
+                <td>{{ product.img }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
     </body>
 </html>

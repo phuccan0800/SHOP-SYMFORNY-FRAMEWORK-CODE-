@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Categories;
 use App\Entity\Products;
-use App\Form\Products1Type;
+use Symfony\Component\Form\AbstractType;
+use App\Form\ProductsType;
 use App\Repository\ProductsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +32,7 @@ class ProductsController extends AbstractController
     public function new(Request $request, ProductsRepository $productsRepository): Response
     {
         $product = new Products();
-        $form = $this->createForm(Products1Type::class, $product);
+        $form = $this->createForm(ProductsType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -61,7 +62,7 @@ class ProductsController extends AbstractController
      */
     public function edit(Request $request, Products $product, ProductsRepository $productsRepository): Response
     {
-        $form = $this->createForm(Products1Type::class, $product);
+        $form = $this->createForm(ProductsType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

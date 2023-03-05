@@ -20,12 +20,14 @@ class OrdersCrudController extends AbstractCrudController
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('customers')
-            ->add('price')
-            ->add('qty')
-            ->add('date')
-            ->add('Products')
-        ;
+        ->add('name')
+        ->add('Categories', EntityType::class, [
+            'class' => Categories::class,
+            'choice_label' => 'id' ])
+        ->add('details')
+        ->add('price')
+        ->add('qty')
+        ->add('img');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

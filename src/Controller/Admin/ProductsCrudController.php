@@ -4,7 +4,11 @@ namespace App\Controller\Admin;
 
 use App\Entity\Products;
 use App\Entity\Categories;
+
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductsCrudController extends AbstractCrudController
 {
@@ -13,17 +17,6 @@ class ProductsCrudController extends AbstractCrudController
         return Products::class;
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
-            ->add('name')
-            ->add('details')
-            ->add('price')
-            ->add('qty')
-            ->add('img')
-            ->add('Categories')
-        ;
-    }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -31,4 +24,5 @@ class ProductsCrudController extends AbstractCrudController
             'data_class' => Products::class,
         ]);
     }
+
 }

@@ -19,7 +19,13 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+        {  # this line is deny access from ROLE_USER 
+            # If they haven't log in when go to /route they will be required log in
+            # If they logged in but they are not admin -> Error Access Denied
+            $this->denyAccessUnlessGranted('ROLE_ADMIN');
+            
+            return parent::index();
+        }
     }
 
     public function configureDashboard(): Dashboard

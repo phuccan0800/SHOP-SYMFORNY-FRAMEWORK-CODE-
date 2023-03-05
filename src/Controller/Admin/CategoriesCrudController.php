@@ -16,12 +16,6 @@ class CategoriesCrudController extends AbstractCrudController
     {
         return Categories::class;
     }
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
-            ->add('name')
-        ;
-    }
 
     public function configureOptions(OptionsResolver $resolver): void
     {

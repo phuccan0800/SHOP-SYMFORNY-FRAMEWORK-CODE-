@@ -9,18 +9,19 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Categories</th>
                 <th>Name</th>
                 <th>Details</th>
                 <th>Price</th>
-                <th>Qty</th>
+                <th>Quality</th>
                 <th>Img</th>
-                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for product in products %}
             <tr>
                 <td>{{ product.id }}</td>
+                <td>{{ product.categories.name }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.details }}</td>
                 <td>{{ product.price }}</td>
