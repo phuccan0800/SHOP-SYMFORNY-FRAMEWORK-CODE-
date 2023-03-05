@@ -44,6 +44,11 @@ class Orders
      */
     private $date;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $address;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +110,18 @@ class Orders
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
 
         return $this;
     }

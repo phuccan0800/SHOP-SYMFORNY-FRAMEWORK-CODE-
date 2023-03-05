@@ -38,4 +38,13 @@ class Categories
 
         return $this;
     }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+
+    public function __toString() {
+        return $this->name;
+    }
 }

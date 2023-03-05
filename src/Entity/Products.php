@@ -3,10 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\ProductsRepository;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProductsRepository::class)
+ * @vich\Uploadable
  */
 class Products
 {
@@ -44,10 +48,14 @@ class Products
     private $qty;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", length=255, nullable=true)
      */
     private $img;
-
+   /**
+     * @Vich\UploadableField(mapping="products", fileNameProperty="img")
+     * @var File
+     */
+    private $imgFile;
     public function getId(): ?int
     {
         return $this->id;
@@ -112,16 +120,40 @@ class Products
 
         return $this;
     }
-
+    /**
+     * @return string|null
+     */
     public function getImg(): ?string
     {
         return $this->img;
     }
 
+    /**
+     * @param  string|null $img
+     * @return $this
+     */
     public function setImg(?string $img): self
     {
         $this->img = $img;
-
         return $this;
+    }
+    /**
+     * @return File|null
+     */
+    public function getImgFile(): ?File
+    {
+        return $this->imgFile;
+    }
+
+    /**
+     * @param  File|null $$imgFile
+     */
+    public function setImgFile(?File $imgFile= null)
+    {
+        $this->imgFile = $imgFile;
+
+    }
+        public function __toString() {
+        return $this->name;
     }
 }

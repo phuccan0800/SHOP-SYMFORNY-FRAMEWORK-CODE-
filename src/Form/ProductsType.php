@@ -18,12 +18,11 @@ class ProductsType extends AbstractType
         ->add('name')
         ->add('Categories', EntityType::class, [
             'class' => Categories::class,
-            'choice_label' => 'id' ])
+            'choice_label' => 'name' ])
         ->add('details')
         ->add('price')
         ->add('qty')
-        ->add('img')
-    ;
+        ->add('img');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

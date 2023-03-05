@@ -9,6 +9,17 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 
 class OrdersCrudController extends AbstractCrudController
 {
@@ -17,18 +28,17 @@ class OrdersCrudController extends AbstractCrudController
         return Orders::class;
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function configureFields(string $pageName): iterable
     {
-        $builder
-        ->add('name')
-        ->add('Categories', EntityType::class, [
-            'class' => Categories::class,
-            'choice_label' => 'id' ])
-        ->add('details')
-        ->add('price')
-        ->add('qty')
-        ->add('img');
+        yield IdField::new('id') ->hideOnForm();
+        yield AssociationField::new('customers','Customer Email');
+        yield AssociationField::new('Products','Product Name');
+        yield IntegerField::new('qty','So Luong');
+        yield MoneyField::new('price') ->setCurrency('VND');
+        yield DateTimeField::new('date')->renderAsChoice();
+        yield TextField::new('address');
     }
+
 
     public function configureOptions(OptionsResolver $resolver): void
     {
