@@ -18,7 +18,8 @@ class Categories
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     * @ORM\Column(type="text", length=255, name="name", nullable=false)
      */
     private $name;
 
@@ -35,14 +36,8 @@ class Categories
     public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
-     */
 
     public function __toString() {
         return $this->name;

@@ -3,9 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-        <script src="{{ app.request.basepath }}/js/script.js"></script>
+        <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet" />
+        <script src="{{ asset('js/script.js') }}"></script>
         <link rel="icon" href="img/logo.png" />
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+          <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -15,17 +17,14 @@
         {% endblock %}
     
     </head>
-    <header>
-
-    </header>
-    <body align=center>
+    <body align=center >	
+    <header></header>						
     <div class="container green topBotomBordersOut">
         <a href='/index.php'>HOME</a>
-        <a href='/products'>PRODUCTS</a>
-        <a>PORTFOLIO</a>
-        <a>ABOUT</a>
-        <a align='right'>CONTACT</a>
+        <a href='/index.php'>PRODUCTS</a>
+        <a href='/index.php'>CATEGORIES</a>
+        <a align='/order'>Order</a>
     </div>
-      {% block body %}  {% endblock %}
+        </div>
     </body>
 </html>

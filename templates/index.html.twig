@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet" />
         <script src="{{ asset('js/script.js') }}"></script>
         <link rel="icon" href="img/logo.png" />
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+          <link href="https://fonts.googleapis.com/css?family=Bentham|Playfair+Display|Raleway:400,500|Suranna|Trocchi" rel="stylesheet">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -16,58 +17,37 @@
         {% endblock %}
     
     </head>
-    <body align=center>	
+    <body align=center >	
     <header></header>						
     <div class="container green topBotomBordersOut">
         <a href='/index.php'>HOME</a>
-        <a href='/products'>PRODUCTS</a>
+        <a href='/index.php'>PRODUCTS</a>
         <a>PORTFOLIO</a>
         <a>ABOUT</a>
-        <a align='right'>CONTACT</a>
+        <a href='/orders'>ORDER</a>
     </div>
     <div>
         {% for product in products %}
-            <div id="make-3D-space">
-                <div id="product-card">
-                    <div id="product-front">
-                        <div class="shadow"></div>
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/t-shirt.png" alt="" />
-                        <div class="image_overlay"></div>
-                        <div id="view_details">View details</div>
-                        <div class="stats"> </div>
-                        <div class="stats-container"> </div>
-                    </div>                         
+            <div class="wrapper" align='center'>
+                <div class="product-img">
+                    <img src="/img/products/{{ product.img }}" height="420" width="327">
                 </div>
-            </div>
-            <div id="product-back">
-	            <div class="shadow"></div>
-                <div id="carousel">
-                    <div class="arrows-perspective">
-                        <div class="carouselPrev">
-                        <div class="y"></div>
-	                    <div class="x"></div>
+                <div class="product-info">
+                    <div class="product-text">
+                        <h1>{{ product.name }}</h1>
+                        <p>{{ product.details }}</p>
                     </div>
-                    <div class="carouselNext">
-                        <div class="y"></div>
-	                    <div class="x"></div>
+                        <div class="product-price-btn">
+                        <p>{{ product.price }} đ</p>
+                        <button align="center" type="button">buy now</button>
                     </div>
                 </div>
             </div>
-            <div id="flip-back">
-            	<div id="cy"></div>
-                <div id="cx"></div>
-            </div>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        </div>	  
         {% else %}
             <tr>
                 <td colspan="7">no records found</td>
             </tr>
-        {% endfor %} 
-</div>
-<video id="video_background" playsinline="" autoplay="" muted="" loop="" poster="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/2306810/d76c70fb5f04eab0d0d85bbab194439967377c1d.jpg">
-									<source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/2306810/47b4af9e334c1cc9d09d6ae877717a70b737c7ae.webm" type="video/webm">
-									<source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/2306810/4ec39b9d960610769f394b02b011be0bcad72bfc.mp4" type="video/mp4">
-							</video>
+        {% endfor %}
+    </div>
     </body>
 </html>
