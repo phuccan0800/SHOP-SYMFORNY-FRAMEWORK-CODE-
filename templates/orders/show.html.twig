@@ -1,34 +1,55 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Orders{% endblock %}
+{% extends 'orders/index.html.twig' %}
 
 {% block body %}
-    <h1>Orders</h1>
-
-    <table class="table">
-        <tbody>
+<body align="center">
+<div align="center" class="order">
+<h1>CHECK ORDER PAGE</h1>
+    <div><div id="cover">
+            <form action="{{ path('find_orders') }}" method="get">
+                <div class="tb">
+                    <div class="td">
+                        <input type="text" name="q" value="" placeholder="Enter Your Number:..." required>
+                        <div class="td" id="s-cover">
+                            <button type="submit">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div></div>
+</div>
+    <table class="table" align="center">
+        <thead>
             <tr>
                 <th>Id</th>
-                <td>{{ order.id }}</td>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Address</th>
+                <th>actions</th>
             </tr>
+        </thead>
+            {% for order in orders %}
+             <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.phone }}</td>
+                <td>{{ customer.username }}</td>
+                <td>{{ customer.password }}</td>
+                <td>{{ customer.address }}</td>
+                <td>
+                    <a href="{{ path('app_customers_show', {'id': customer.id}) }}">show</a>
+                    <a href="{{ path('app_customers_edit', {'id': customer.id}) }}">edit</a>
+                </td>
+            </tr>
+            {% else %}
             <tr>
-                <th>Price</th>
-                <td>{{ order.price }}</td>
+                <td colspan="7">NO ORDER WITH THIS PHONE NUMBER !!</td>
             </tr>
-            <tr>
-                <th>Qty</th>
-                <td>{{ order.qty }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ order.date ? order.date|date('Y-m-d') : '' }}</td>
-            </tr>
-        </tbody>
+            {% endfor %}
     </table>
-
-    <a href="{{ path('app_orders_index') }}">back to list</a>
-
-    <a href="{{ path('app_orders_edit', {'id': order.id}) }}">edit</a>
-
-    {{ include('orders/_delete_form.html.twig') }}
+</body>
 {% endblock %}

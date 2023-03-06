@@ -17,15 +17,33 @@
         {% endblock %}
     
     </head>
-    <body align=center >	
-    <header></header>						
-    <div class="container green topBotomBordersOut">
+<script>
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+    document.getElementById('myBtn').addEventListener("click", function(){
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    });
+</script>
+    <header >     
+        <div align='center' class="container green topBotomBordersOut">
         <a href='/index.php'>HOME</a>
         <a href='/index.php'>PRODUCTS</a>
-        <a href='/index.php'>CATEGORIY</a>
-       <a href='/index.php'>ABOUT US</a>
+        <a href='/index.php'>ABOUT US</a>
         <a href='/orders'>CHECK ORDER</a>
-    </div>
+        </div>
+    </header>
+    <body>
     {% block body %}  {% endblock %}
+<video id="video_background" playsinline="" autoplay="" muted="" loop="" poster="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1385730/d0b93520a3362f0cbd922242da084748857f7a71.jpg">
+									<source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1385730/577d864a2cc8e45659772d09698c1d60621f5d0d.webm" type="video/webm">
+									<source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1385730/1448c6625638cd9514ce282ba9f29173fa5ff001.mp4" type="video/mp4">
+							</video>
     </body>
 </html>

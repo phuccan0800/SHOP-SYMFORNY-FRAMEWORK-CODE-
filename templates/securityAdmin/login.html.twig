@@ -1,7 +1,9 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Log in!{% endblock %}
-
+<!DOCTYPE html>
+<html>
+<head>
+        <link href="{{ asset('css/login.css') }}" rel="stylesheet" />
+        <script src="{{ asset('js/script.js') }}"></script>
+</head>
 {% block body %}
     {% if app.user %}
         <div>
@@ -9,36 +11,34 @@
             <h1>You had login with Admin Account !! wait 5s !!</h1>
         </div>
     {% else %}
-
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in to admin page</h1>
-    <label for="inputUsername">Username</label>
+<div class="wrapper2">
+    <div class="container">
+        <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <h1>Admin Page</h1>
+        <label for="inputUsername">Username</label>
     <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
     <label for="inputPassword">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+    <input type="hidden" name="_csrf_token"?
+           value="{{ csrf_token('authenticate') }}">
+    <button class= id="login-button" "btn btn-lg btn-primary" type="submit">Sign in</button>
 </form>
+<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
 {% endif %}
 {% endblock %}
+<html>

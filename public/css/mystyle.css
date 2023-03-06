@@ -1,5 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Raleway';
-
+* {
+  outline: none;
+}
 body {
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -11,33 +13,39 @@ body {
     font-family: 'Barlow Condensed', sans-serif;
     letter-spacing: 0.05em;
     font-weight: 400;
+    color: white;
     -webkit-font-smoothing: antialiased;
 }
 header
 {
     font-family: Raleway;
-    margin: 0 auto;
-	padding: 5em 3em;
-	text-align: center;
+    margin-top: 150px;
+	  text-align: center;
+    height: 40px;
+}
+.order {
+  margin-top: 100px;
+  text-align: center;
 }
 #video_background {
-    position: absolute;
-    background-attachment: fixed;
-    bottom: 0px;
-    right: 0px;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1000;
-    overflow: hidden;
+  position: fixed;
+  background-attachment: fixed;
+  bottom: 0px;
+  right: 0px;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1000;
+  overflow: hidden;
 }
 div.container
 {
-    font-family: Raleway;
-    margin: 0 auto;
+  font-family: Raleway;
+  margin: 0 auto;
 	padding: 10px 3px;
 	text-align: center;
+  opacity: 80%;
 }
 
 div.container a
@@ -50,11 +58,13 @@ div.container a
     position: relative;
     z-index: 0;
     cursor: pointer;
+    opacity: 100%;
 }
 
 .green
 {
-    background: #d400e7;
+  box-shadow: 2px 2px 2px 2px rgba(38, 17, 228, 0.5); /*Đổ bóng cho menu*/
+  width: 70%;
 }
 div.topBotomBordersOut a:before, div.topBotomBordersOut a:after
 {
@@ -73,9 +83,6 @@ div.topBotomBordersOut a:before
     top: 0px;
     transform: translateY(10px);
 }
-.search {
-  margin-top: 30px;
-}
 div.topBotomBordersOut a:after
 {
     bottom: 0px;
@@ -87,10 +94,10 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
     opacity: 1;
     transform: translateY(0px);
 }
-
 /* products index */
-
-
+.search {
+  margin-top: 30px;
+}
 .wrapper {
     height: 420px;
     width: 680px;
@@ -100,7 +107,6 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
     -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
     margin-bottom: 50px;
-
   }
   
   .product-img {
@@ -218,3 +224,92 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
   #myBtn:hover {
   background-color: #f1f1f1;
   }
+
+  /* Searchbox  */
+
+  .tb {
+    display: table;
+    width: 100%;
+  }
+  
+  .td {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  input,
+  button {
+    color: #fff;
+    font-family: Nunito;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+  }
+  
+  #cover {
+    width: 800px;
+    padding: 35px;
+    height: 20px;
+    margin: 83px auto 0 auto;
+    background-color: #ff7575;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px #ff7c7c, 0 0 0 10px #ffffffeb;
+    transform: scale(0.6);
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    height: 30px;
+    font-size: 40px;
+    line-height: 1;
+  }
+  
+  input[type="text"]::placeholder {
+    color: #cf3b3b;
+  }
+  
+  #s-cover {
+    width: 1px;
+    padding-left: 35px;
+  }
+
+/* Nút Dropdown*/
+.nut_dropdown {
+  color: white;
+  padding: 16px;
+  font: 20px Raleway;
+  border: none;
+}
+
+/* Thiết lập vị trí cho thẻ div với class dropdown*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Nội dung Dropdown */
+.noidung_dropdown {
+  /*Ẩn nội dụng các đường dẫn*/
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Thiết kế style cho các đường dẫn tronng Dropdown */
+.noidung_dropdown a {
+  color: rgb(255, 255, 255);
+  background-color: blueviolet;
+  text-decoration: none;
+  display: block;
+}
+
+/* thay đổi màu background khi hover vào đường dẫn */
+.noidung_dropdown a:hover {display: block;}
+
+/* hiển thị nội dung dropdown khi hover */
+.dropdown:hover .noidung_dropdown {display: block;}
+
+/*Dùng Để hiển thị nội dung*/
+.hienThi {display:block;}

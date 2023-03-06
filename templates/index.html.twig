@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet" />
         <script src="{{ asset('js/script.js') }}"></script>
         <link rel="icon" href="img/logo.png" />
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
@@ -17,12 +17,8 @@
         {% endblock %}
     
     </head>
-    <header></header>
-<button id="myBtn" title="Lên đầu trang"><img src='/img/len.png' title='lên đầu trang' width='50px'/></button>
-
 <script>
     window.onscroll = function() {scrollFunction()};
-
     function scrollFunction() {
         if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
             document.getElementById("myBtn").style.display = "block";
@@ -30,27 +26,44 @@
             document.getElementById("myBtn").style.display = "none";
         }
     }
- 
     document.getElementById('myBtn').addEventListener("click", function(){
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     });
 </script>
-    <body align=center >	
-					
-    <div class="container green topBotomBordersOut">
+    <header >     
+        <div align='center' class="container green topBotomBordersOut">
+        <a href='/index.php'><img src='/img/logo.png' width='25px'/></a>
         <a href='/index.php'>HOME</a>
         <a href='/index.php'>PRODUCTS</a>
-        <a href='/index.php'>CATEGORY</a>
-       <a href='/index.php'>ABOUT US</a>
+        <div class="dropdown">
+            <button><a>CATEGORIES </a></button>
+            <div class="noidung_dropdown">
+                {% for category in categories %} 
+                <a href="http://localhost:8000/find?q={{ category.name }}">{{ category.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <a href='/index.php'>ABOUT US</a>
         <a href='/orders'>CHECK ORDER</a>
-    </div>
-    <div>
-    <form class="search" action="{{ path('find_index') }}" method="get">
-        <input type="text" name="q" value="" placeholder="Search...">
-        <button type="submit">Search</button>
-    </form>
- 
+        </div>
+    </header>
+<button id="myBtn" title="Lên đầu trang"><img src='/img/len.png' title='lên đầu trang' width='50px'/></button>
+<body>	
+    <div><div id="cover">
+            <form action="{{ path('find_index') }}" method="get">
+                <div class="tb">
+                    <div class="td">
+                        <input type="text" name="q" value="" placeholder="Search" required>
+                        <div class="td" id="s-cover">
+                            <button type="submit">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div></div>
+    <div class="products">
         {% for product in products %}
             <div class="wrapper" align='center'>
                 <div class="product-img">
@@ -64,7 +77,7 @@
                         <div class="product-price-btn">
                         <p>Category: {{ product.categories }}</p><br>
                         <p>{{ product.price }} đ</p><br>
-                        <button align="center" type="button">buy now</button>
+                        <button align="center" type="button" ><a href="{{ path('app_orders_new') }}">buy now </a></button>
                     </div>
                 </div>
             </div>
@@ -73,8 +86,10 @@
                 <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
-    
-    </div>
+    <div>
+<video id="video_background" playsinline="" autoplay="" muted="" loop="" poster="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1385730/d0b93520a3362f0cbd922242da084748857f7a71.jpg">
+									<source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1385730/577d864a2cc8e45659772d09698c1d60621f5d0d.webm" type="video/webm">
+									<source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1385730/1448c6625638cd9514ce282ba9f29173fa5ff001.mp4" type="video/mp4">
+							</video>
     </body>
-
 </html>

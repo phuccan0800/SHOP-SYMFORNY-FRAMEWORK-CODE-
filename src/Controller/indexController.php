@@ -21,18 +21,22 @@ class indexController extends AbstractController
      */
     public function index(indexRepository $indexRepository): Response
     {
+        $entityManager = $this->getDoctrine()->getManager();
+        $categories = $entityManager->getRepository(Categories::class)->findAll();
+        $products = $entityManager->getRepository(Products::class)->findAll();
         return $this->render('index.html.twig', [
-            'categories' => $indexRepository->findAll(),
-            'products' => $indexRepository->findAll(),
+            'categories' => $categories,
+            'products' => $products,
         ]);
     }
+
     /**
      * @Route("find", name="find_index", methods={"GET"})
      */
     public function find(Request $request): Response
     {
         $query = $request->query->get('q'); // lấy giá trị của tham số q trên URL
-
+        $categories = [];
         $products = [];
         if ($query) {
             $repository = $this->getDoctrine()->getRepository(Products::class);
@@ -42,10 +46,12 @@ class indexController extends AbstractController
                 ->getQuery()
                 ->getResult();
         }
-
+        $entityManager = $this->getDoctrine()->getManager();
+        $categories = $entityManager->getRepository(Categories::class)->findAll();
         return $this->render('index.html.twig', [
             'query' => $query,
             'products' => $products,
+            'categories' => $categories,
         ]);
     }
 

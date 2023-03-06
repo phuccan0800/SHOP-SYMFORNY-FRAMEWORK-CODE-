@@ -46,45 +46,24 @@ class OrdersController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_orders_show", methods={"GET"})
+     /**
+     * @Route("/find_orders", name="find_orders", methods={"GET"})
      */
-    public function show(Orders $order): Response
+    public function find(Request $request): Response
     {
-        return $this->render('orders/show.html.twig', [
-            'order' => $order,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="app_orders_edit", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, Orders $order, OrdersRepository $ordersRepository): Response
-    {
-        $form = $this->createForm(OrdersType::class, $order);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $ordersRepository->add($order, true);
-
-            return $this->redirectToRoute('app_orders_index', [], Response::HTTP_SEE_OTHER);
+        $query = $request->query->get('q'); // lấy giá trị của tham số q trên URL
+        $orders = [];
+        if ($query) {
+            $repository = $this->getDoctrine()->getRepository(Orders::class);
+            $orders = $repository->createQueryBuilder('o')
+                ->where('o.phone LIKE :query')
+                ->setParameter('query', '%' . $query . '%')
+                ->getQuery()
+                ->getResult();
         }
-
-        return $this->renderForm('orders/edit.html.twig', [
-            'order' => $order,
-            'form' => $form,
+        return $this->render('/orders/show.html.twig', [
+            'query' => $query,
+            'orders' => $orders,
         ]);
-    }
-
-    /**
-     * @Route("/{id}", name="app_orders_delete", methods={"POST"})
-     */
-    public function delete(Request $request, Orders $order, OrdersRepository $ordersRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$order->getId(), $request->request->get('_token'))) {
-            $ordersRepository->remove($order, true);
-        }
-
-        return $this->redirectToRoute('app_orders_index', [], Response::HTTP_SEE_OTHER);
     }
 }
