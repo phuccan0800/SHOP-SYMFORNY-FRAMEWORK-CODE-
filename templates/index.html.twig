@@ -77,7 +77,7 @@
                         <div class="product-price-btn">
                         <p>Category: {{ product.categories }}</p><br>
                         <p>{{ product.price }} đ</p><br>
-                        <button align="center" type="button" ><a href="{{ path('app_orders_new') }}">buy now </a></button>
+                        <a href="/orders/new_order?q={{ product.id }}"><button align="center" type="button" >buy now </button></a>
                     </div>
                 </div>
             </div>

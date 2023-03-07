@@ -7,19 +7,21 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class OrdersType extends AbstractType
+class Orders1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('price')
             ->add('qty')
-            ->add('fullname')
-            ->add('email')
-            ->add('phone')
             ->add('date')
             ->add('address')
             ->add('fullname')
-
+            ->add('email')
+            ->add('phone')
+            ->add('status')
+            ->add('Products')
+            ->add('customers')
         ;
     }
 

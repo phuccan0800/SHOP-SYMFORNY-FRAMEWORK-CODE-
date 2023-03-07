@@ -4,10 +4,71 @@
 
 {% block body %}
 <body align="center">
-    <h1>Create new Orders</h1>
+<div align='center' class='ordertext'>
 
-    {{ include('orders/_form.html.twig') }}
+        <h1>Create new Orders</h1>
+                   <div><div id="cover">
+            <form action="{{ path('find_index') }}" method="get">
+                <div class="tb">
+                    <div class="td">
+                        <input type="text" name="q" value="" placeholder="Search" required>
+                        <div class="td" id="s-cover">
+                            <button type="submit">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div></div>
 
-    <a href="{{ path('app_orders_index') }}">back to list</a>
+  </select>
+     {% for product in products %}
+            <div class="wrapper" align='center'>
+                <div class="product-img">
+                    <img src="/img/products/{{ product.img }}" height="420" width="327">
+                </div>
+                <div class="product-info">
+                    <div class="product-text">
+                        <h1>{{ product.name }}</h1>
+                        <p>{{ product.details }}</p>
+                    </div>
+                        <div class="product-price-btn">
+                        <p>Category: {{ product.categories }}</p><br>
+                        <p>{{ product.price }} đ</p><br>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+<form action="{{ path('app_orders_new') }}" method="POST">
+  <label for="product_id">Product ID:</label>
+  <select id="product_id" name="product_id">
+        {% for products in products %}
+      <option value="{{ products.id }}">{{ products.name }} - {{ products.price }}</option>
+    {% endfor %}
+  </select>
+
+  <label for="qty">Quantity:</label>
+  <input type="number" id="qty" name="qty" required>
+
+  <label for="fullname">Full Name:</label>
+  <input type="text" id="fullname" name="fullname" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="phone">Phone:</label>
+  <input type="tel" id="phone" name="phone" required>
+
+  <label for="address">Address:</label>
+  <textarea id="address" name="address" required></textarea>
+
+  <button type="submit">Submit Order</button>
+</form>
+
+</div>
 </body>
 {% endblock %}

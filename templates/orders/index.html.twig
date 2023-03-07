@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Orders{% endblock %}
 
 {% block body %}
 <body align="center">
-<div align="center" class="order">
-<h1>CHECK ORDER PAGE</h1>
+    <h1>Orders</h1>
     <div><div id="cover">
             <form action="{{ path('find_orders') }}" method="get">
                 <div class="tb">
                     <div class="td">
-                        <input type="text" name="q" value="" placeholder="Enter Your Number:..." required>
+                        <input type="text" name="q" value="" placeholder="Enter your Number:" required>
                         <div class="td" id="s-cover">
                             <button type="submit">
                             </button>
@@ -18,13 +18,5 @@
                 </div>
             </form>
     </div></div>
-{% for order in orders %}
-
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-</div>
-<body>
+</body>
 {% endblock %}

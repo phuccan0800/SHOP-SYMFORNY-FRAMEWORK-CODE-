@@ -4,12 +4,13 @@ namespace App\Repository;
 
 use App\Entity\Orders;
 use App\Entity\Customers;
+use App\Entity\Products;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Orders>
- *
+ * @extends ServiceEntityRepository<Products>
  * @method Orders|null find($id, $lockMode = null, $lockVersion = null)
  * @method Orders|null findOneBy(array $criteria, array $orderBy = null)
  * @method Orders[]    findAll()

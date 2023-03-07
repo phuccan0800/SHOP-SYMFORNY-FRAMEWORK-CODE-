@@ -27,6 +27,10 @@ header
   margin-top: 100px;
   text-align: center;
 }
+.ordertext {
+  margin-top: 100px;
+  text-align: center;
+}
 #video_background {
   position: fixed;
   background-attachment: fixed;
@@ -249,7 +253,7 @@ div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
   
   #cover {
     width: 800px;
-    padding: 35px;
+    padding: 25px;
     height: 20px;
     margin: 83px auto 0 auto;
     background-color: #ff7575;
