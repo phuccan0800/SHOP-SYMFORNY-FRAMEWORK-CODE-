@@ -22,4 +22,12 @@ class indexRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Products::class);
     }
+    public function findAllRandom()
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->addSelect('RANDOM() as HIDDEN rand')
+            ->orderBy('rand');
+        return $qb->getQuery()->getResult();
+    }
 }
+

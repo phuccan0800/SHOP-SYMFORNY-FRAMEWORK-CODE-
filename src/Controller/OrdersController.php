@@ -82,6 +82,7 @@ class OrdersController extends AbstractController
             $order->setPhone($phone);
             $order->setAddress($address);
             $order->setDate(new \DateTime());
+            $order->setstatus('uncheck');
 
             // Lưu đối tượng Order vào cơ sở dữ liệu
             $entityManager->persist($order);

@@ -5,48 +5,37 @@
 {% block body %}
 <body align="center">
     <h1>Orders</h1>
+       <table class="table" align="center">
+        <thead>
+            <tr>
+                <th>Full Name&nbsp</th>&nbsp
+                <th>Email &nbsp</th>
+                <th>Phone &nbsp</th>&nbsp
+                <th>Product &nbsp</th>&nbsp
+                <th>Quantity &nbsp</th>&nbsp
+                <th>Price &nbsp</th>&nbsp
+                <th>Address &nbsp</th>&nbsp
+                <th>Date Order &nbsp</th>&nbsp
+                <th>Status &nbsp</th>&nbsp
+            </tr>
+        </thead>
     {% for order in orders %}
-    <table class="table" align="center">
         <tbody>
-        
             <tr>
-                <th>Id</th>
-                <td>{{ order.id }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ order.price }}</td>
-            </tr>
-            <tr>
-                <th>Qty</th>
-                <td>{{ order.qty }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ order.date ? order.date|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ order.address }}</td>
-            </tr>
-            <tr>
-                <th>Fullname</th>
-                <td>{{ order.fullname }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ order.email }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ order.phone }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ order.status }}</td>
+                <td>{{ order.fullname }}&nbsp</td>&nbsp
+                <td>{{ order.email }} &nbsp</td>&nbsp
+                <td>{{ order.phone }} &nbsp</td>&nbsp
+                <td>{{ order.products }} &nbsp</td>&nbsp
+                <td>{{ order.qty }} &nbsp</td>&nbsp
+                <td>{{ order.price }} &nbsp</td>&nbsp
+                <td>{{ order.address }} &nbsp</td>&nbsp
+                <td>{{ order.date ? order.date|date('d-m-Y') : '' }} &nbsp</td>&nbsp
+                <td>{{ order.status }} &nbsp</td>&nbsp
             </tr>
         </tbody>
+        <br>
+    {% endfor %}
     </table>
 </body>
-    {% endfor %}
+    
 {% endblock %}

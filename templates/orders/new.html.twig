@@ -3,9 +3,17 @@
 {% block title %}New Orders{% endblock %}
 
 {% block body %}
+<link href="{{ asset('css/button.css') }}" rel="stylesheet" />
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <defs>
+	  <symbol id="arrow" viewBox="0 0 100 100">
+	  	<path d="M12.5 45.83h64.58v8.33H12.5z"/>
+    		<path d="M59.17 77.92l-5.84-5.84L75.43 50l-22.1-22.08 5.84-5.84L87.07 50z"/>
+	  </symbol>
+  </defs>
+</svg>
 <body align="center">
 <div align='center' class='ordertext'>
-
         <h1>Create new Orders</h1>
                    <div><div id="cover">
             <form action="{{ path('find_index') }}" method="get">
@@ -43,32 +51,32 @@
                 <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
-<form action="{{ path('app_orders_new') }}" method="POST">
-  <label for="product_id">Product ID:</label>
-  <select id="product_id" name="product_id">
-        {% for products in products %}
-      <option value="{{ products.id }}">{{ products.name }} - {{ products.price }}</option>
-    {% endfor %}
-  </select>
-
-  <label for="qty">Quantity:</label>
-  <input type="number" id="qty" name="qty" required>
-
-  <label for="fullname">Full Name:</label>
-  <input type="text" id="fullname" name="fullname" required>
-
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-
-  <label for="phone">Phone:</label>
-  <input type="tel" id="phone" name="phone" required>
-
-  <label for="address">Address:</label>
-  <textarea id="address" name="address" required></textarea>
-
-  <button type="submit">Submit Order</button>
+<div class=order-box align=center>
+    <form align=center action="{{ path('app_orders_new') }} " method="POST" >
+        <label for="product_id">Product Name:</label><br>
+        <select id="product_id" name="product_id">
+            {% for products in products %}
+                <option align=center value="{{ products.id }}">{{ products.name }} - {{ products.price }}$</option>
+            {% endfor %}
+        </select>
+            <br>
+    <label for="qty">Quantity:</label><br>
+  <input type="number" id="qty" name="qty" required><br>
+  <label for="fullname">Full Name:</label><br>
+  <input type="text" id="fullname" name="fullname" required><br>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required><br>
+  <label for="phone">Phone:</label><br>
+  <input type="tel" id="phone" name="phone" required><br>
+  <label for="address">Address:</label><br>
+  <textarea id="address" name="address" required></textarea><br>
+  <div class="container2"><div class="content"><button class="button2" type="submit">Submit Order <span>
+				<svg>
+					<use xlink:href="#arrow" href="#arrow"></use>
+				</svg>
+			</span></button></div></div>
 </form>
-
+</div>
 </div>
 </body>
 {% endblock %}
