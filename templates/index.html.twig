@@ -48,8 +48,38 @@
         <a href='/orders'>CHECK ORDER</a>
         </div>
     </header>
-<button id="myBtn" title="Lên đầu trang"><img src='/img/len.png' title='lên đầu trang' width='50px'/></button>
+
 <body>	
+<!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100637462761655");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v16.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div><div id="cover">
             <form action="{{ path('find_index') }}" method="get">
                 <div class="tb">
@@ -91,5 +121,7 @@
 									<source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1385730/577d864a2cc8e45659772d09698c1d60621f5d0d.webm" type="video/webm">
 									<source src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/1385730/1448c6625638cd9514ce282ba9f29173fa5ff001.mp4" type="video/mp4">
 							</video>
+    
     </body>
+    
 </html>
